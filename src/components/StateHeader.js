@@ -1,5 +1,3 @@
-import StateDropdown from './StateDropdown';
-
 import {SPRING_CONFIG_NUMBERS} from '../constants.js';
 import {formatDate, formatNumber, getStatistic} from '../utils/commonFunctions';
 
@@ -7,7 +5,8 @@ import {memo, useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {animated, useSpring} from 'react-spring';
 
-function StateHeader({data, stateCode}) {
+function StateHeader({data}) {
+  console.log('state', data);
   const {t} = useTranslation();
 
   const trail = useMemo(() => {
@@ -24,42 +23,27 @@ function StateHeader({data, stateCode}) {
   }, []);
 
   const spring = useSpring({
-    total: getStatistic(data, 'total', 'tested'),
+    total: getStatistic(data, 'total', 'total'),
     config: SPRING_CONFIG_NUMBERS,
   });
 
   return (
     <div className="StateHeader">
-      <div className="header-left">
-        <StateDropdown {...{stateCode}} hyperlink={false} trail={trail[0]} />
-        {data?.meta?.['last_updated'] && (
-          <h5 className="fadeInUp" style={trail[1]}>
-            {`${t('Last Updated on')} ${formatDate(
-              data.meta.last_updated,
-              'dd MMM, p'
-            )} ${t('IST')}`}
-          </h5>
-        )}
-      </div>
+      <div className="header-left">Vietnam</div>
 
       <div className="header-right fadeInUp" style={trail[2]}>
-        <h5>{t('Tested')}</h5>
-        <animated.h2>
-          {spring.total.to((total) => formatNumber(total, 'long'))}
-        </animated.h2>
-        {data?.meta?.tested?.date && (
-          <h5 className="timestamp">
-            {`${t('As of')} ${formatDate(data.meta.tested.date, 'dd MMMM')}`}
-          </h5>
-        )}
-        {data?.meta?.tested?.source && (
-          <h5>
-            {`${t('per')} `}
-            <a href={data.meta.tested.source} target="_noblank">
-              {t('source')}
-            </a>
-          </h5>
-        )}
+        <h5>{t('Confirmed')}</h5>
+        <animated.h2>{data?.total?.confirmed || '0'}</animated.h2>
+        <h5>{t('Recovered')}</h5>
+        <animated.h2>{data?.total?.recovered || '0'}</animated.h2>
+        <h5>{t('Deadths')}</h5>
+        <animated.h2>{data?.total?.deaths || '0'}</animated.h2>
+        <h5>{t('Administered')}</h5>
+        <animated.h2>{data?.vaccine?.administered || '0'}</animated.h2>
+        <h5>{t('People vaccinated')}</h5>
+        <animated.h2>{data?.vaccine?.people_vaccinated || '0'}</animated.h2>
+        <h5>{t('People partially vaccinated')}</h5>
+        <animated.h2>{data?.vaccine?.people_partially_vaccinated || '0'}</animated.h2>
       </div>
     </div>
   );

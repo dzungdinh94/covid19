@@ -12,36 +12,22 @@ import {memo, useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {animated, useSpring} from 'react-spring';
 
-function PureLevelItem({statistic, total, delta}) {
+function PureLevelItem({statistic, total}) {
+  console.log(statistic, total);
   const {t} = useTranslation();
   const spring = useSpring({
     total: total,
-    delta: delta,
+    delta: undefined,
     config: SPRING_CONFIG_NUMBERS,
   });
 
   const statisticConfig = STATISTIC_CONFIGS[statistic];
-
   return (
     <>
       <h5>{t(capitalize(statisticConfig.displayName))}</h5>
       <animated.h4>
         {statistic !== 'active' ? (
-          delta > 0 ? (
-            /* Add space after + because react-spring regex bug */
-            spring.delta.to(
-              (delta) =>
-                `+ ${formatNumber(
-                  delta,
-                  statisticConfig.format !== 'short'
-                    ? statisticConfig.format
-                    : 'long',
-                  statistic
-                )}`
-            )
-          ) : (
-            <HeartFillIcon size={9} verticalAlign={2} />
-          )
+          <HeartFillIcon size={9} verticalAlign={2} />
         ) : (
           '\u00A0'
         )}
@@ -88,7 +74,7 @@ function Level({data}) {
           <LevelItem
             {...{statistic}}
             total={getStatistic(data, 'total', statistic)}
-            delta={getStatistic(data, 'delta', statistic)}
+            // delta={getStatistic(data, 'delta', statistic)}
           />
         </animated.div>
       ))}

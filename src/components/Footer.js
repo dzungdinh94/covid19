@@ -9,11 +9,11 @@ function Footer() {
     <footer>
       <div className="link">
         <a
-          href="https://github.com/covid19india"
+          href="https://github.com/19dungnd"
           target="_blank"
           rel="noopener noreferrer"
         >
-          covid19india
+          19dungnd
         </a>
       </div>
 
@@ -21,7 +21,7 @@ function Footer() {
 
       <div className="links">
         <a
-          href="https://github.com/covid19india/covid19india-react"
+          href="https://github.com/19dungnd/19dungnd-react"
           className="github"
           target="_blank"
           rel="noopener noreferrer"
@@ -31,7 +31,7 @@ function Footer() {
 
         <a
           className="api"
-          href="https://api.covid19india.org"
+          href="https://api.19dungnd.org"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -39,7 +39,7 @@ function Footer() {
         </a>
 
         <a
-          href="https://t.me/covid19indiaorg"
+          href="https://t.me/19dungndorg"
           className="telegram"
           target="_blank"
           rel="noopener noreferrer"
@@ -48,7 +48,7 @@ function Footer() {
         </a>
 
         <a
-          href="https://twitter.com/covid19indiaorg"
+          href="https://twitter.com/19dungndorg"
           target="_blank"
           rel="noopener noreferrer"
           className="twitter"
@@ -57,7 +57,7 @@ function Footer() {
         </a>
 
         <a
-          href="https://instagram.com/covid19indiaorg"
+          href="https://instagram.com/19dungndorg"
           target="_blank"
           rel="noopener noreferrer"
           className="instagram"
@@ -66,7 +66,7 @@ function Footer() {
         </a>
 
         <a
-          href="mailto:hello@covid19india.org"
+          href="mailto:hello@19dungnd.org"
           className="mail"
           target="_blank"
           rel="noopener noreferrer"

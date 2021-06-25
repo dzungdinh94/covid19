@@ -1,5 +1,5 @@
 import {
-  INDIA_ISO_SUFFIX,
+  dungnd_ISO_SUFFIX,
   ISO_DATE_REGEX,
   LOCALE_SHORTHANDS,
   STATISTIC_CONFIGS,
@@ -18,7 +18,7 @@ import i18n from 'i18next';
 
 let locale = null;
 const numberFormatter = new Intl.NumberFormat('en-IN', {
-  maximumFractionDigits: 1,
+  maximumFractionDigits: 0,
 });
 
 const getLocale = () => {
@@ -36,20 +36,20 @@ export const isDevelopmentOrTest = () => {
   return false;
 };
 
-export const getIndiaDate = () => {
+export const getdungndDate = () => {
   return utcToZonedTime(new Date(), 'Asia/Kolkata');
 };
 
-export const getIndiaDateISO = () => {
-  return formatISO(getIndiaDate(), {representation: 'date'});
+export const getdungndDateISO = () => {
+  return formatISO(getdungndDate(), {representation: 'date'});
 };
 
-export const getIndiaDateYesterday = () => {
-  return subDays(getIndiaDate(), 1);
+export const getdungndDateYesterday = () => {
+  return subDays(getdungndDate(), 1);
 };
 
-export const getIndiaDateYesterdayISO = () => {
-  return formatISO(getIndiaDateYesterday(), {representation: 'date'});
+export const getdungndDateYesterdayISO = () => {
+  return formatISO(getdungndDateYesterday(), {representation: 'date'});
 };
 
 export const formatLastUpdated = (unformattedDate) => {
@@ -59,9 +59,9 @@ export const formatLastUpdated = (unformattedDate) => {
   });
 };
 
-export const parseIndiaDate = (isoDate) => {
-  if (!isoDate) return getIndiaDate();
-  if (isoDate.match(ISO_DATE_REGEX)) isoDate += INDIA_ISO_SUFFIX;
+export const parsedungndDate = (isoDate) => {
+  if (!isoDate) return getdungndDate();
+  if (isoDate.match(ISO_DATE_REGEX)) isoDate += dungnd_ISO_SUFFIX;
   return utcToZonedTime(new Date(isoDate), 'Asia/Kolkata');
 };
 
@@ -71,7 +71,7 @@ export const formatDate = (unformattedDate, formatString) => {
     typeof unformattedDate === 'string' &&
     unformattedDate.match(ISO_DATE_REGEX)
   )
-    unformattedDate += INDIA_ISO_SUFFIX;
+    unformattedDate += dungnd_ISO_SUFFIX;
   const date = utcToZonedTime(new Date(unformattedDate), 'Asia/Kolkata');
   return format(date, formatString, {
     locale: locale,
@@ -142,8 +142,8 @@ export const getStatistic = (
       if (
         !data?.meta?.tested?.date ||
         differenceInDays(
-          parseIndiaDate(expiredDate),
-          parseIndiaDate(data.meta.tested.date)
+          parsedungndDate(expiredDate),
+          parsedungndDate(data.meta.tested.date)
         ) > TESTED_EXPIRING_DAYS
       ) {
         return 0;

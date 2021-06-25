@@ -24,7 +24,7 @@ const data = {
     last_updated: '2020-05-22',
     tested: {
       last_updated: '2020-05-22',
-      source: 'https://t.me/Covid19india_Auxiliary_Test_Data/117?single',
+      source: 'https://t.me/19dungnd_Auxiliary_Test_Data/117?single',
     },
   },
   total: {

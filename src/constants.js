@@ -3,7 +3,10 @@ import {scaleOrdinal} from 'd3-scale';
 // export const API_DOMAIN = 'http://localhost:8080';
 // export const API_DOMAIN =
 //   'https://raw.githubusercontent.com/shuklaayush/api/test/tmp';
-export const API_DOMAIN = 'https://api.covid19india.org';
+export const API_DOMAIN = 'https://api.19dungnd.org';
+export const API_DOMAIN_VER2 = 'https://-api.mmediagroup.fr';
+
+export const DATA_API_ROOT_VER2 = `${API_DOMAIN_VER2}/v1`;
 
 export const DATA_API_ROOT = `${API_DOMAIN}/v4/min`;
 
@@ -42,11 +45,17 @@ export const STATISTIC_CONFIGS = {
     showDelta: true,
     hasPrimary: true,
   },
-  deceased: {
-    displayName: 'deceased',
+  deaths: {
+    displayName: 'deaths',
     color: '#6c757d',
     format: 'long',
     showDelta: true,
+    hasPrimary: true,
+  },
+  mortality_rate: {
+    displayName: 'mortality rate',
+    color: '#007bff',
+    format: 'long',
     hasPrimary: true,
   },
   other: {
@@ -55,7 +64,7 @@ export const STATISTIC_CONFIGS = {
     color: '#fd7e14',
     showDelta: true,
     tableConfig: {
-      notes: 'Migrated cases or non-COVID deaths',
+      notes: 'Migrated cases or non- deaths',
     },
     hasPrimary: true,
   },
@@ -165,9 +174,9 @@ export const STATISTIC_CONFIGS = {
 
 export const PRIMARY_STATISTICS = [
   'confirmed',
-  'active',
   'recovered',
-  'deceased',
+  'deaths',
+  'mortality_rate',
 ];
 
 export const LEVEL_STATISTICS = [...PRIMARY_STATISTICS];
@@ -209,12 +218,12 @@ export const DISTRICT_TEST_END_DATE = '2021-02-02';
 
 export const ISO_DATE_REGEX = /^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])$/g;
 
-export const INDIA_ISO_SUFFIX = 'T00:00:00+05:30';
+export const dungnd_ISO_SUFFIX = 'T00:00:00+05:30';
 
 export const SPRING_CONFIG_NUMBERS = {clamp: true, precision: 1};
 
 export const TIMESERIES_CHART_TYPES = {
-  total: 'Cumulative',
+  total: 'Last 7 day',
   delta: 'Daily',
 };
 
@@ -385,7 +394,7 @@ export const MAP_META = {
     mapType: MAP_TYPES.STATE,
   },
   TT: {
-    geoDataFile: `${MAPS_DIR}/india.json`,
+    geoDataFile: `${MAPS_DIR}/dungnd.json`,
     mapType: MAP_TYPES.COUNTRY,
   },
 };
@@ -430,7 +439,7 @@ export const STATE_NAMES = {
   LA: 'Ladakh',
   LD: 'Lakshadweep',
   PY: 'Puducherry',
-  TT: 'India',
+  TT: 'dungnd',
   [UNASSIGNED_STATE_CODE]: 'Unassigned',
 };
 

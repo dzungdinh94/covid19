@@ -31,8 +31,8 @@ export async function getStatesAndDistrictsFromMaps() {
     const fileNameWithoutExtension = removeFileExtension(fileName);
 
     if (
-      fileName === 'india.json' ||
-      fileName === 'india_districts.json' ||
+      fileName === 'dungnd.json' ||
+      fileName === 'dungnd_districts.json' ||
       fileName === 'dnh-and-dd.json'
     )
       continue;
